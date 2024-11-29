@@ -25,7 +25,9 @@ class PairTradingStrategy:
             alpaca_base_url
         )
 
+        # THIS IS WHERE DATA NEEDS TO BE PULLED FROM THE STORAGE DATABASE
         # Data storage for spreads (30 day rolling window, will pull from actual database)
+        # Currently can't test data since I need 30 days worth of 1 minute tick data
         self.spread_history = deque(maxlen=30*60*12)
 
     def fetch_prices(self):
