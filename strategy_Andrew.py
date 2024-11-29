@@ -42,7 +42,7 @@ class PairTradingStrategy:
 
     def create_signal(self):
         if len(self.spread_history) < 30*60*12:
-            print('Not enough data to create signal.'.format(len(self.spread_history))) 
+            print(f'Not enough data to create signal. Current data points: {len(self.spread_history)}') 
             return None 
         mean_spread = np.mean(self.spread_history)
         std_dev = np.std(self.spread_history)
