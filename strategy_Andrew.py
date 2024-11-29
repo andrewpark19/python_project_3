@@ -42,13 +42,14 @@ class PairTradingStrategy:
 
     def create_signal(self):
         if len(self.spread_history) < 30*60*12:
+            print('Not enough data to create signal.'.format(len(self.spread_history))) 
             return None 
         mean_spread = np.mean(self.spread_history)
         std_dev = np.std(self.spread_history)
         current_spread = self.spread_history[-1]
-        if current_spread > mean_spread + 2 * std_dev:
+        if current_spread > mean_spread + 1 * std_dev:
             return 'SELL_USDC_BUY_USDT'
-        elif current_spread < mean_spread - 2 * std_dev:
+        elif current_spread < mean_spread - 1 * std_dev:
             return 'BUY_USDC_SELL_USDT'
         else:
             return None
