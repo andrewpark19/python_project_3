@@ -3,7 +3,8 @@ from functools import partial
 import numpy as np
 import pandas as pd
 
-from config import STOCK_HIGH, STOCK_LOW, START_TRADING_DATE
+# from part_4.config.config import STOCK_HIGH, STOCK_LOW, START_TRADING_DATE
+from config import *
 
 def calc_spread(df_price: pd.DataFrame, m: int,
                 use_log: bool = False) -> pd.Series:
