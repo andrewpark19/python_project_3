@@ -110,8 +110,11 @@ class PairTradingStrategy:
                     self.execute_trade(signal)
 
                 get_PnL(api_key, api_secret)
+                time.sleep(2)
                 successful_trades(api_key, api_secret)
+                time.sleep(2)
                 drawdowns(api_key, api_secret)
+                time.sleep(2)
                 get_positions(api_key, api_secret)
 
                 time.sleep(10)
@@ -125,4 +128,5 @@ strategy = PairTradingStrategy(
     alpaca_base_url=base_url
 )
 strategy.run()
+
         
