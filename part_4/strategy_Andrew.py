@@ -4,11 +4,15 @@ import numpy as np
 import time
 from collections import deque
 from alpaca_trade_api.rest import REST
+from strategy_monitoring import get_positions, get_PnL, successful_trades, drawdowns
 
-api_key = 'AKW6V8Y7VDE6Y13I6CLX'
-api_secret = 'qg0BEcaGbnBNmeLJPd3xJgptfjcGrmiOuBBF9feT'
-base_url = 'https://paper-api.alpaca.markets'
+# api_key = 'AKW6V8Y7VDE6Y13I6CLX'
+# api_secret = 'qg0BEcaGbnBNmeLJPd3xJgptfjcGrmiOuBBF9feT'
+# base_url = 'https://paper-api.alpaca.markets'
 
+api_key = "PKI5T4EWCKE65UWKW0MC"
+api_secret = "IzBbUa6ufG1WKjYlYfgZgLw6vyIfRTnCNB4Lowv1"
+base_url = "https://paper-api.alpaca.markets/v2"
 
 class PairTradingStrategy:
     def __init__(self, alpaca_api_key, alpaca_secret, alpaca_base_url):
@@ -104,6 +108,11 @@ class PairTradingStrategy:
                 signal = self.create_signal()
                 if signal:
                     self.execute_trade(signal)
+
+                get_PnL(api_key, api_secret)
+                successful_trades(api_key, api_secret)
+                drawdowns(api_key, api_secret)
+                get_positions(api_key, api_secret)
 
                 time.sleep(10)
             except Exception as e:
