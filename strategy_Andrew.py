@@ -28,7 +28,7 @@ class PairTradingStrategy:
         # THIS IS WHERE DATA NEEDS TO BE PULLED FROM THE STORAGE DATABASE
         # Data storage for spreads (30 day rolling window, will pull from actual database)
         # Currently can't test data since I need 30 days worth of 1 minute tick data
-        self.spread_history = deque(maxlen=30*60*12)
+        self.spread_history = deque(maxlen=7*60*24)
 
     def fetch_prices(self):
         usdc_ticker = self.exchange.fetch_ticker('USDC/USD')
@@ -49,9 +49,9 @@ class PairTradingStrategy:
         mean_spread = np.mean(self.spread_history)
         std_dev = np.std(self.spread_history)
         current_spread = self.spread_history[-1]
-        if current_spread > mean_spread + 1 * std_dev:
+        if current_spread > mean_spread +  2 * std_dev:
             return 'SELL_USDC_BUY_USDT'
-        elif current_spread < mean_spread - 1 * std_dev:
+        elif current_spread < mean_spread - 2 * std_dev:
             return 'BUY_USDC_SELL_USDT'
         else:
             return None
