@@ -7,10 +7,11 @@ from alpaca_trade_api.rest import REST
 import requests
 import json
 import numpy as np
+from config import API_KEY, API_SECRET
 #from alpaca.trading.client import TradingClient
 
-api_key = 'AKW6V8Y7VDE6Y13I6CLX'
-api_secret = 'qg0BEcaGbnBNmeLJPd3xJgptfjcGrmiOuBBF9feT'
+api_key = API_KEY
+api_secret = API_SECRET
 base_url = 'https://paper-api.alpaca.markets'
 
 

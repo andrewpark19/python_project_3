@@ -1,12 +1,13 @@
-from Project4.socket_streaming import AlpacaWebSocket
+from socket_streaming import AlpacaWebSocket
 from  api_calls import CustomAlpacaAPI
-import database
+import part_4.SUBMISSION.database as database
 import os
+from config import API_KEY, API_SECRET
 
 ticker = "BTC/USD"
 # Alpaca API credentials from environment variables
-api_key = os.getenv("ALPACA_API_KEY")
-secret_key = os.getenv("ALPACA_SECRET_KEY")
+api_key = API_KEY
+secret_key = API_SECRET
 
 # Initialize the custom API handler
 alpaca_api = CustomAlpacaAPI(api_key, secret_key)

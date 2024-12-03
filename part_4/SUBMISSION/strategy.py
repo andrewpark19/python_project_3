@@ -6,14 +6,10 @@ from datetime import datetime, timedelta, timezone
 from collections import deque
 from alpaca_trade_api.rest import REST, TimeFrame
 from strategy_monitoring import get_positions, get_PnL, successful_trades, drawdowns
+from config import API_KEY, API_SECRET
 
-# api_key = 'AKW6V8Y7VDE6Y13I6CLX'
-# api_secret = 'qg0BEcaGbnBNmeLJPd3xJgptfjcGrmiOuBBF9feT'
-# base_url = 'https://paper-api.alpaca.markets'
-
-# CAN SOMEONE CHECK THIS PART FOR AUTHORIZATION
-api_key = "PKI5T4EWCKE65UWKW0MC"
-api_secret = "IzBbUa6ufG1WKjYlYfgZgLw6vyIfRTnCNB4Lowv1"
+api_key = API_KEY
+api_secret = API_SECRET
 base_url = "https://paper-api.alpaca.markets/v2"
 
 class PairTradingStrategy:
